@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import UserContext from '../context/UserContext';
 
-function User({ user, changeColor }) {
+function User({user}) {
+  const context = useContext(UserContext);
   return (
     <div style={{ background: user.color }}>
       <h3>{user.name}</h3>
@@ -10,7 +12,7 @@ function User({ user, changeColor }) {
       <input
         value={user.color}
         type='text'
-        onChange={(e) => changeColor(user.id, e.target.value)}
+        onChange={(e) => context.changeColor(user.id, e.target.value)}
       />
     </div>
   );

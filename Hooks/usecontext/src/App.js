@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import UserList from './components/UserList';
+import UserContext from './context/UserContext';
 import './App.css';
 
 const data = [
@@ -35,12 +36,14 @@ function App() {
     );
   };
   return (
-    <div className='App'>
-      <header>
-        <h1>Welcome!</h1>
-      </header>
-      <UserList users={users} changeColor={changeColor}></UserList>
-    </div>
+    <UserContext.Provider value={{ users, changeColor }}>
+      <div className='App'>
+        <header>
+          <h1>Welcome!</h1>
+        </header>
+        <UserList />
+      </div>
+    </UserContext.Provider>
   );
 }
 
